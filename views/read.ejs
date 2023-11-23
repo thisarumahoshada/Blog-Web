@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+
+
+<% if (locals.blogTitles) { %>
+
+    <h1>
+        <%= blogTitles %>
+    </h1>
+    
+    <h3>
+        <%= blogDes %>
+    </h3>
+
+<% } else { %>
+    <h1>No Content here</h1>
+<% } %>
+
+
+<%- include("partials/footer.ejs") %>
