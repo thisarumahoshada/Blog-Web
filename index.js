@@ -18,6 +18,8 @@ app.get("/", (req,res) => {
 app.get("/writeBlog", (req,res) => {
     res.render("write.ejs");
     console.log("In write Blog")
+
+    // This is a git change
 });
 
 
