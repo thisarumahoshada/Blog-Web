@@ -1,15 +1,14 @@
 <%- include("partials/header.ejs") %>
 
 
-
-<% if (locals.blogTitles) { %>
+<% if (locals.title) { %>
 
     <h1>
-        <%= blogTitles %>
+        <%= title %>
     </h1>
     
     <h3>
-        <%= blogDes %>
+        <%= body %>
     </h3>
 
 <% } else { %>

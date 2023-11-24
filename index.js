@@ -1,13 +1,12 @@
 import express from "express";
 import bodyParser from "body-parser";
 
-
-
 const app = express();
 const port = 3000;
 
-const blogArr = [];
 const titleArr = [];
+const blogs = [];
+
 
 app.use(bodyParser.urlencoded({ extended: true }));
 
@@ -17,40 +16,35 @@ app.get("/", (req,res) => {
 
 app.get("/writeBlog", (req,res) => {
     res.render("write.ejs");
-    console.log("In write Blog")
-
-    // This is a git change
 });
-
-
 
 app.post("/write", (req,res) => { 
-    titleArr.push(req.body["nTitle"]);
-    blogArr.push(req.body["nBlog"]);
-    res.render("index.ejs", {
-        newBlog: req.body["nBlog"],
-        blogTitles: titleArr,
-        blogDes: blogArr
+    
+    var blogTitle = req.body["nTitle"]; 
+    var blogBody = req.body["nBlog"];
+
+    blogs.push({
+        title: blogTitle,
+        body: blogBody
     });
-    console.log(blogArr);
-    console.log(titleArr);
+    
+    titleArr.push(req.body["nTitle"]);
+
+    res.render("index.ejs", {
+        blogTitles: titleArr,
+    });
 });
+
 
 app.get("/read/:id", (req,res) => {
 
-        var idv = req.params.id
-
-        var selectedT = titleArr[idv]
-        var selectedB = blogArr[idv]
-
-        console.log(selectedT)
+        var selectedID = req.params.id;
+        var selectedTitle = blogs[selectedID].title;
+        var selectedBody = blogs[selectedID].body;
 
         res.render("read.ejs", { 
-        newBlog: req.body["nBlog"],
-        blogTitles : selectedT,
-        blogDes: selectedB
-
-        //....read/2
+        title : selectedTitle,
+        body: selectedBody
     });
 });
 

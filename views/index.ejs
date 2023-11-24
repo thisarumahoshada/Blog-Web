@@ -6,7 +6,7 @@
     <form action="/read" method="GET">
     <ul>
     <% for(let i = 0; i < blogTitles.length; i++) { %>
-        <li id=<%= i %>><a href="/read/<%= i %>" onclick=`<% console.log(i) %>`><%= blogTitles[i] %></a></li>
+        <li id=<%= i %>><a href="/read/<%= i %>"><%= blogTitles[i] %></a></li>
     <% } %>
     </ul>   
     </form>
