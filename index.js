@@ -36,6 +36,7 @@ app.post("/write", (req,res) => {
 });
 
 
+
 app.get("/read/:id", (req,res) => {
 
         var selectedID = req.params.id;
@@ -44,7 +45,40 @@ app.get("/read/:id", (req,res) => {
 
         res.render("read.ejs", { 
         title : selectedTitle,
-        body: selectedBody
+        body: selectedBody,
+        id : selectedID
+    });
+});
+
+app.post("/update/:id", (req,res) => {
+
+    var currentID = req.params.id;
+    var currentTitle = blogs[currentID].title;
+    var currentBody = blogs[currentID].body;
+    res.render("update.ejs", {
+        title: currentTitle,
+        body: currentBody,
+        id: currentID
+    });
+    
+});
+
+app.post("/updated/:id", (req,res) => {
+
+    var currentID = req.params.id;
+    var updatedBody = req.body["uBody"];
+    blogs[currentID].body = updatedBody;
+    console.log(blogs);
+    res.render("index.ejs", {
+        blogTitles: titleArr
+    });
+});
+
+
+
+app.get("/home", (req,res) => {
+    res.render("index.ejs", {
+        blogTitles: titleArr,
     });
 });
 

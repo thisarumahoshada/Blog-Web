@@ -3,7 +3,7 @@
 
 <% if (locals.blogTitles) { %>
     
-    <form action="/read" method="GET">
+    <form  method="GET">
     <ul>
     <% for(let i = 0; i < blogTitles.length; i++) { %>
         <li id=<%= i %>><a href="/read/<%= i %>"><%= blogTitles[i] %></a></li>
@@ -13,6 +13,8 @@
 <% } else { %>
     <h1>No Content here</h1>
     <% } %>
+
+    
 
 <form action="/writeBlog" method="GET">
     <button>Write</button>

@@ -1,0 +1,20 @@
+<%- include("partials/header.ejs") %>
+
+<% if (locals.title) { %>
+
+    <form action="/updated/<%= id %>" method="post">
+        <h1><%= title %></h1>
+        <input type="text" value="<%= body %>" name="uBody">
+        <input type="submit" value="Submit">
+    </form>
+
+
+<% } else { %>
+    <h1>No content</h1>
+<% } %>
+
+
+
+
+
+<%- include("partials/footer.ejs") %>
