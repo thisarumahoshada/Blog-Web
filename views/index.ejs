@@ -1,23 +1,47 @@
 <%- include("partials/header.ejs") %>
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        
+        <span class="fs-4 heading">Personal Blog</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        
+        <form  method="GET">
+            <li class="nav-item"><a href="/writeBlog" class="nav-link myButtons" id="navButton" aria-current="page">Write Blog</a></li>
+        </form>
+        <li class="nav-item"><a href="#" class="nav-link home">About</a></li>
+      </ul>
+    </header>
+</div>
+
+
 
 
 <% if (locals.blogTitles) { %>
     
     <form  method="GET">
-    <ul>
+    <div class="list-group blogList">
     <% for(let i = 0; i < blogTitles.length; i++) { %>
-        <li id=<%= i %>><a href="/read/<%= i %>"><%= blogTitles[i] %></a></li>
+        <a href="/read/<%= i %>" id=<%= i %> class="list-group-item list-group-item-action listItems">
+            <%= blogTitles[i] %>
+        </a>
     <% } %>
-    </ul>   
+</div>
     </form>
+    
+
+   
 <% } else { %>
-    <h1>No Content here</h1>
+    <div class="noContent">
+        <h1>No Content here</h1>
+        <h5>Click the Write Blog button in the navigation panel and start writing</h5>
+    </div>
     <% } %>
 
     
 
-<form action="/writeBlog" method="GET">
-    <button>Write</button>
-</form>
+
 
 <%- include("partials/footer.ejs") %>

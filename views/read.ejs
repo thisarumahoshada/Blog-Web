@@ -1,18 +1,44 @@
 <%- include("partials/header.ejs") %>
 
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        
+        <span class="fs-4 heading">Personal Blog</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        
+        <form  method="GET">
+            <li class="nav-item"><a href="/writeBlog" class="nav-link active" id="navButton" aria-current="page">Write Blog</a></li>
+        </form method="GET">
+        <li class="nav-item"><a href="/home" class="nav-link home">HOME</a></li>
+      </ul>
+    </header>
+  </div>
+
 
 <% if (locals.title) { %>
 
-    <form action="/update/<%= id %>" method="POST">
-        <h1>
-            <%= title %>
-        </h1>      
-        
-        <label value="a" name="cBody">
-            <%= body %>
-        </h3>
-        <input type="submit" value="UPDATE">
-    </form>
+
+    <div class="blogRead">
+        <form action="/update/<%= id %>" method="POST">
+            <div class="readTitle">
+                <h3>
+                    <%= title %>
+                </h3>  
+             </div>
+            
+            <div class="readBlog">
+                <label value="a" name="cBody">
+                    <%= body %>
+                </label>
+            </div>
+            <div class="updateOption">
+                <p>Do you want to update the blog ? <input type="submit" id="updateButton" value="Click here to update"></p>
+            </div>
+        </form>
+    </div>  
 
     
 
@@ -21,9 +47,7 @@
     <h1>No Content here</h1>
 <% } %>
 
-<form  method="GET">
-    <a href="/home">Home</a>
-</form>
+
 
 
 <%- include("partials/footer.ejs") %>

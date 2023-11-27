@@ -1,13 +1,46 @@
 <%- include("partials/header.ejs") %>
-<h2>Write your blog</h2>
-<form action="/write" method="POST">
+
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+      <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        
+        <span class="fs-4 heading">Personal Blog</span>
+      </a>
+
+      <ul class="nav nav-pills">
+        
+        <form  method="POST">
+            <li class="nav-item"><a href="/write" class="nav-link  myButtons" aria-current="page" id="navButton">UPLOAD</a></li>
+        </form>
+        <form  method="GET" name="myform">
+        <li class="nav-item"><a href="/home" class="nav-link home">HOME</a></li>
+        </form>
+      </ul>
+    </header>
+  </div>
+
+<!-- <form action="/write" method="POST">
     <input type="text" name="nTitle" placeholder="Blog Title">
     <input type="text" name="nBlog" placeholder="Type here .....">
     <input type="submit" value="OK">
-</form>
+</form> -->
+<div class="formBody">
+    <!-- <h5 class="pageTitle">Start writting a new blog</h5> -->
+    <form action="/write" method="POST" name="myform">
+        <div class=" formItem">
+        <label for="blogTitle" class="formLabels">Blog Title</label>
+        <input type="text" name="nTitle" class="form-control" id="blogTitle" placeholder="Enter the title">
+        </div>
+        <div class=" formItem">
+        <label for="blogBody" class="formLabels">Blog Body</label>
+        <textarea type="text" name="nBlog" class="form-control" id="blogBody" placeholder="Write here ..."></textarea>
+        </div>
+        <div class=" formItem">
+          <p>Once you have finished writing click bellow button to upload. Make the title unique and you can't edit the title after the submission. </p>
+          </div>
+        <button type="submit" class="btn btn-outline-danger myButtons">SUBMIT</button>
+  </form>
+</div>
 
-<form  method="GET">
-    <a href="/home">Home</a>
-</form>
 
 <%- include("partials/footer.ejs") %>
